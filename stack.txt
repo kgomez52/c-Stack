@@ -1,0 +1,39 @@
+#include "dslib.h"
+#include <stdlib.h>
+#include <stdio.h>
+
+void stack_init(stack_t *s, int capacity){
+        s->max = capacity;
+        s->count = 0;
+        s->data = (int *)malloc(sizeof(int) * s->max);
+}
+
+int stack_size(stack_t *s){
+        printf("exiting size\n");
+        return s->count;
+}
+
+int stack_pop(stack_t *s){
+        if(s->count == 0){
+                return -9999;
+        }
+        s->count--;
+        return *s[s->count].data;
+}
+
+void stack_push(stack_t *s, int e){
+        //printf("pushing element\n");
+        if(s->count >= s->max){
+                return;
+        }
+        printf("pushing element\n");
+        //s[s->count].data = &e;
+        *s[s->count].data = e;
+        printf("stored element\n");
+        s->count++;
+        printf("push done\n");
+}
+
+void stack_deallocate(stack_t *s){
+        free(s);
+}

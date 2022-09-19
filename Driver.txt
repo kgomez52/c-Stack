@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "dslib.h"
+
+int main(){
+        //Test 1:
+        struct stack *s;
+        s = (struct stack *)malloc(sizeof(struct stack));
+
+        //Created stack of capacity 3
+        stack_init(s, 3);
+        printf("created stack of capacity 3\n");
+
+        printf("The stack size is %d\n", stack_size(s));
+
+        //since stack is empty is should print -9999
+        printf("The popped element is %d\n", stack_pop(s));
+
+        //Adding element 10 to the stack
+        stack_push(s, 10);
+        printf("Added 10 to the stack\n");
+
+        //removing the top element which should be 10
+        printf("The popped element is %d\n", stack_pop(s));
+
+        //Adding element 20 to the stack
+        stack_push(s, 20);
+        printf("Added 20 to the stack\n");
+        printf("The stack size is now %d\n", stack_size(s));
+
+        //Adding element 100, 200, 300 to the stack
+        stack_push(s, 100);
+        stack_push(s, 200);
+        stack_push(s, 300);
+        stack_push(s, 400);
+        stack_push(s, 500);
+        stack_push(s, 600);
+
+        printf("The popped element is %d\n", stack_pop(s));
+
+        stack_deallocate(s);
+        return 0;
+}       
